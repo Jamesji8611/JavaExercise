@@ -52,7 +52,6 @@ public class NotePad extends JFrame implements ActionListener{
 			this.setIconImage(ImageIO.read( new File("D:/MyJavacode/NotePad/Images/smallTiger.jpg")));
 			//this.setIconImage(ImageIO.read(this.getClass().getResource("/NotePad/Images/smallTiger.jpg")));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.setTitle("NotePad");
