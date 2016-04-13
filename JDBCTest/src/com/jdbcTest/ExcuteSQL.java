@@ -23,6 +23,7 @@ public class ExcuteSQL {
 								+ rs.getString("Age") + "\t" + rs.getString("Country") );
 			}
 			
+			rs.close();
 			st.close();
 			jdbc1.con.close();
 		} catch (SQLException e) {

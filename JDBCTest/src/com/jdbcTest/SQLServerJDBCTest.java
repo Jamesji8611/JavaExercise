@@ -10,9 +10,9 @@ public class SQLServerJDBCTest {
 	String ConnectDB = "jdbc:sqlserver://127.0.0.1:1433;DatabaseName=SQLServerTest"; //数据库连接串
 	String User = "sa";
 	String Pswd = "Jmh8906146";
-	Connection con = null;
+	public Connection con = null;
 	
-	public SQLServerJDBCTest(){
+	public SQLServerJDBCTest() throws Exception{
 		
 		try {
 			Class.forName(jDriver);
