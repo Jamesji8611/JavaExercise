@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class ExcuteSQL {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		SQLServerJDBCTest jdbc1 = new SQLServerJDBCTest();
 		

@@ -8,6 +8,7 @@ import com.jdbcTest.SQLServerJDBCTest;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,16 +36,18 @@ public class LoginProcess extends HttpServlet {
 		// TODO Auto-generated method stub
 		String user = req.getParameter("username"); //获取前一个servlet表单提交过来的参数
 		String passwd = req.getParameter("passwd");
+		String saveCookie = req.getParameter("savecookies");
+		//System.out.println("savecookies =" + saveCookie);
+		
+		//Session
 		HttpSession hs = req.getSession(true);//打开session空间
-		hs.setMaxInactiveInterval(30);//设置session超时时间,以秒为单位
+		hs.setMaxInactiveInterval(300);//设置session超时时间,以秒为单位
 		hs.setAttribute("LoginCheck", null);//向session写入数据
-		/*
-		String jDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; //数据库引擎
-		String ConnectDB = "jdbc:sqlserver://127.0.0.1:1433;DatabaseName=SQLServerTest"; //数据库连接串
-		String User = "sa";
-		String Pswd = "Jmh8906146";
-		Connection con = null;
-		*/
+		
+		//Cookies
+		Cookie myCookie = null;
+		Cookie[] cookies = null;
+		
 		SQLServerJDBCTest jdbc = null;
 		Statement st = null;
 		ResultSet rs = null;
@@ -65,7 +68,18 @@ public class LoginProcess extends HttpServlet {
 			if(dbpasswd!=null && dbpasswd.equals(passwd)){
 				System.out.println("验证成功!");
 				hs.setAttribute("LoginCheck", "Pass");
+				
+				if(saveCookie != null){
+					myCookie = new Cookie("userName", user);
+					myCookie.setMaxAge(30);//设置Cookie有效时间, in seconds
+					res.addCookie(myCookie);
+					myCookie = new Cookie("passwd", passwd);
+					res.addCookie(myCookie);
+				}
+				
+				
 				res.sendRedirect("welcome");
+				
 			}else{
 				System.out.println("验证失败!!!");
 				res.sendRedirect("login?info=" + errorInfo);

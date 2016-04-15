@@ -43,6 +43,7 @@ public class LoginPage extends HttpServlet {
 		pw.println("<h1>登录</h1>");
 		pw.println("用户名: <input text='用户名' type=text name='username'/><br>");
 		pw.println("密	码:<input text='密    码' type=password name='passwd'/><br>");
+		pw.println("<input type= checkbox name=savecookies value=2>是否保留cookie<br>");
 		pw.println("<input text='登    录' type=submit name='submit'/><br>");
 		pw.println("</form>");
 		pw.println("</Body>");
