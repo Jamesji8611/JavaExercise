@@ -72,8 +72,8 @@ public class Welcome extends HttpServlet {
 		}
 		
 		if(loginCheck != null && loginCheck.equals("Pass") ){
-			pw.println("<image src=Images/001.gif width=150px length=150px><br>");
-			pw.println("Welcome! <br>");
+			pw.println("<image src=Images/001.gif width=150px length=150px><br><center>");
+			pw.println("Welcome! <br><hr>");
 			
 			try{
 				if(rowCount%rowsize == 0){
@@ -81,14 +81,18 @@ public class Welcome extends HttpServlet {
 				}else{
 					pageCount = rowCount/rowsize + 1;
 				}
-				System.out.println("rowCount = " + rowCount + " pageCount = " + pageCount);
+				//System.out.println("rowCount = " + rowCount + " pageCount = " + pageCount);
 				
+				String ServletConTimes = this.getServletContext().getAttribute("VistTimes").toString();
+				pw.println("<b>VisitTimes: "+ ServletConTimes +"</b><br>");
+				pw.println("IP: " + req.getRemoteAddr()+ "<br>");
+				pw.println("HostName: " + req.getRemoteHost()+ "<br>");
 				pw.println("<table border=1>");
 				pw.println("<tr><th>ID</th><th>Name</th><th>Passwd</th><th>Email</th><th>UserLevel</th></tr>");
 				for(int i = 0; i < ar.size(); i++ ){
 					//输出表
 					pw.println("<tr>");
-					pw.println("<td>"+ar.get(i).getUserID()+"</td>");
+					pw.println("<td><a href=userdetails?userid="+ar.get(i).getUserID()+">"+ar.get(i).getUserID()+"</a></td>");
 					pw.println("<td>"+ar.get(i).getUserName()+"</td>");
 					pw.println("<td>"+ar.get(i).getPassword()+"</td>");
 					pw.println("<td>"+ar.get(i).getEmail()+"</td>");
@@ -115,7 +119,8 @@ public class Welcome extends HttpServlet {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}			
+			}
+			pw.println("</center>");
 		}else{
 			pw.println("非法登录!");
 		}
