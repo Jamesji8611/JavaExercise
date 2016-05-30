@@ -18,16 +18,16 @@ public class JDBCConnect {
 	
 	public JDBCConnect() throws Exception{
 		
-		//JDBC ·½Ê½Á¬½Ó
+		//JDBC æ•°æ®åº“è¿æ¥
 		/******************
-		Class.forName(JDriver);//¼ÓÔØÊı¾İ¿â
+		Class.forName(JDriver);//åŠ è½½æ•°æ®åº“
 		Con = DriverManager.getConnection(ConnectDB, user, passwd);
 		**********************/
 		
-		//Á¬½Ó³Ø·½Ê½Á¬½Ó
-		Context context = new InitialContext();//»ñÈ¡Context×ÊÔ´
-		DataSource ds = (DataSource)context.lookup("java:/comp/env/jdbc/SqlServer1"); //»ñÈ¡Êı¾İ¿â×ÊÔ´
-		System.out.println("Ê¹ÓÃJNDIÁ¬½Ó");
+		//JNDIè¿æ¥æ± 
+		Context context = new InitialContext();//åŠ è½½Contextå†…å®¹,ç›¸å¯¹server.xml ä¸­contextå†…å®¹
+		DataSource ds = (DataSource)context.lookup("java:/comp/env/jdbc/SqlServer1"); //åŠ è½½jndi-name
+		System.out.println("ä½¿ç”¨JNDIæ–¹å¼");
 		Con = ds.getConnection();
 		
 	}

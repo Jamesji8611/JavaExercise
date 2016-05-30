@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usersname> <!-- 根元素 Root Element -->
+	<name>usersName</name>
+	<age>usersAge</age>
+	<id>usersId</id>
+	<peoples>
+		<people item="people1">
+			<id>1</id>
+			<name>name1</name>
+			<age>19</age>
+			<sex>male</sex>
+		</people>
+		<people item="java">
+			<id>2</id>
+			<name>name2</name>
+			<age>19</age>
+			<sex>male</sex>
+		</people>
+		<people item="java">
+			<id>3</id>
+			<name>name3</name>
+			<age>19</age>
+			<sex>male</sex>
+		</people>
+		<!-- people item="java">
+			<property name="id" value="4"/>
+			<property name="name" value="name4"/>
+			<property name="age" value="19"/>
+			<property name="sex" value="male"/>
+		</people-->
+	</peoples>
+</usersname>
