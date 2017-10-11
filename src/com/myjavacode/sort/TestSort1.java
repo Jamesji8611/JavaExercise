@@ -1,14 +1,17 @@
 package com.myjavacode.sort;
 
+import java.util.Random;
+
 public class TestSort1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {99,94,95,93,92,91,90,89,97,88};
+		//int arr[] = {99,94,95,93,92,91,90,89,97,88};
+		int arr1[] = TestSort1.createArr(1000); //随机产生数组
 		System.out.println("----排序前数组：");
-		TestSort1.printArr(arr);
+		TestSort1.printArr(arr1);
 		
-		TestSort1.printArr(TestSort1.sort(arr));
+		TestSort1.printArr(TestSort1.sort(arr1));
 		
 		
 		
@@ -38,6 +41,16 @@ public class TestSort1 {
 			TestSort1.printArr(arr);
 		}
 		return arr;		
+	}
+	
+	public static int[] createArr(int i) {
+		int[] arr = new int[i];
+		Random ran = new Random();
+		for(int j=0; j<i; j++) {
+			arr[j] = ran.nextInt(1000000);
+		}
+		
+		return arr;
 	}
 
 }
