@@ -81,9 +81,12 @@ public class DataOpernation {
 		return 0;
 	}
 	
+	
 	public BeanCustomers queryData( BeanCustomers Data) {
 		
 		String sql = "Select * from customers";
+		
+		//ArrayList al = new ArrayList<BeanCustomers>();
 		
 		if(Data.getID() >=0 ) sql = sql + " Where id="+  Data.getID() ;
 		else if(Data.getName() != null) sql = sql + " Where Name='" + Data.getName()+"'";
